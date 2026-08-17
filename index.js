@@ -218,14 +218,48 @@
 // })
 const button = document.getElementById("btn");
 const container = document.getElementById("container");
-console.log(button);
+const loading=document.createElement('div');
+container.appendChild(loading);
+
 
 async function fetchData() {
-    const serverData = await fetch('https://fakestoreapi.com/products');
-    const jsonData = await serverData.json();
-    // console.log(jsonData);
-    container.innerHTML=JSON.stringify(`${jsonData}`);
+    try {
+        const serverData = await fetch('https://fakestoreapi.com/products');
+        const jsonData = await serverData.json();
+
+        console.log(jsonData);
+
+        let table = `<table>
+            <tr>
+                <th>ITEM_ID</th>
+                <th>ITEM_TITLE</th>
+                <th>ITEM_PRICE</th>
+            </tr>
+
+            ${
+                jsonData.map((ele) => {
+                    return `
+                        <tr>
+                            <td>${ele.id}</td>
+                            <td>${ele.title}</td>
+                            <td>${ele.price}</td>
+                        </tr>
+                        
+                    `;
+                }).join('')
+            }
+
+        </table>`;
+
+        container.innerHTML = table;
+
+    } catch (e) {
+        loading.innerHTML = '<h2>loading error</h2>';
+    } finally {
+        loading.innerHTML = '';
+    }
 }
+
 button.addEventListener("click", fetchData);
 // fetchData();
 
