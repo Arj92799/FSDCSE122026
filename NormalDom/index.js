@@ -69,6 +69,8 @@ function buildResume() {
         table.appendChild(row3);
         table.appendChild(row4);
         table.setAttribute('border','1')
+        table.setAttribute('height',200)
+        table.setAttribute('width',200)
 
         root.appendChild(img);
         root.appendChild(h2);
