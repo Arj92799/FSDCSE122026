@@ -3,16 +3,15 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-import ICard from './component/ICard'
-import Gallery from './component/Gallery'
+import Card from './component/Card'
+import Cardgallery from './component/Cardgallery'
 
 function App() {
-  
- 
 
   return (
     <div>
-      <Gallery/>
+      <Card />
+      <Cardgallery />
     </div>
   )
 }
